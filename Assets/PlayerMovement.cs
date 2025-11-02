@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour {
     public CharacterController controller;
+    public InputActionReference move;
+    public InputActionReference jump;
     private Vector3 velocity;
     private Vector3 acceleration;
     
@@ -19,13 +22,14 @@ public class PlayerMovement : MonoBehaviour {
     
     void Start() {
         acceleration = new Vector3(0, -_gravity, 0);
+
     }
     
     void Update() {
-        // Input Handling
-        float xInput = Input.GetAxis("Horizontal");
-        float zInput = Input.GetAxis("Vertical");
-        Vector3 movementInput = (transform.right * xInput + transform.forward * zInput) * _playerSpeed;
+        Vector3 movementInputRaw = this.move.action.ReadValue<Vector2>();
+        Vector3 movement = new Vector3(movementInputRaw.x, 0, movementInputRaw.y);
+        
+        Vector3 movementInput = transform.TransformDirection(movement) * _playerSpeed;
         
         // Physics Handling
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -35,7 +39,7 @@ public class PlayerMovement : MonoBehaviour {
             velocity.y = -2f;
         }
         
-        if (Input.GetButtonDown("Jump") && isGrounded) {
+        if (jump.action.triggered && isGrounded) {
             velocity.y = Mathf.Sqrt(_jumpHeight * -2f * acceleration.y);
         }
         
