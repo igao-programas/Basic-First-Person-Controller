@@ -4,7 +4,4 @@ Gonna make it as polished and as basic as possible so in future projects I'm jus
 
 # TO-DO
 - Basic Scenario, maybe?
-- Check if all proper files are ignored in .gitignore
-- Create the All-seing Eye
-- Key to alternate mouse/gamepad or detect the last input
-- Refactor code
+- Create the All-seeing Eye

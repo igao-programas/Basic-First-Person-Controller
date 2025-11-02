@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 779235885}
   - component: {fileID: 779235884}
   - component: {fileID: 779235883}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +486,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782628375}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &782628377
 Camera:
   m_ObjectHideFlags: 0
@@ -659,7 +659,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBody: {fileID: 2085107370}
-  mouseSensivity: 4
+  cameraMovementInput: {fileID: 7892652098280795883, guid: 6cf9f1c35a305f2449a85a7beb0e867a, type: 3}
+  mouseSensitivity: 0.2
+  gamepadSensitivity: 2.2
 --- !u!1 &2085107368
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,7 +698,7 @@ CharacterController:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
   m_Radius: 0.5
@@ -735,16 +737,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8141723761687f948bd1e779d8efe4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gravity: 31.3
   controller: {fileID: 2085107369}
-  movement: {fileID: 0}
+  move: {fileID: 2865371469395837313, guid: 6cf9f1c35a305f2449a85a7beb0e867a, type: 3}
+  jump: {fileID: 7721506465084891436, guid: 6cf9f1c35a305f2449a85a7beb0e867a, type: 3}
+  _playerSpeed: 30.1
+  _jumpHeight: 10
   groundCheck: {fileID: 601026316}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  _playerSpeed: 30.1
-  _gravity: 31.3
-  _jumpHeight: 10
 --- !u!114 &2085107372
 MonoBehaviour:
   m_ObjectHideFlags: 0
